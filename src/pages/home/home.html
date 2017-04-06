@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Voice Recognition App
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+
+
+  <ion-card>
+      <ion-card-header>
+        Result
+      </ion-card-header>
+
+      <ion-card-content >
+        {{result}}
+      </ion-card-content>
+    </ion-card>
+
+    <div class="footer">
+
+        <button ion-button [ngClass]="{  'initial': state ==='initial', 'listening': state === 'listening' }"  position="bottom"  (click)="startListening()">
+          <ion-icon name="mic"></ion-icon>
+        </button>
+
+
+    </div>
+</ion-content>

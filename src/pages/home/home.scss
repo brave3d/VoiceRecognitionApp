@@ -1,0 +1,37 @@
+page-home {
+.round{
+
+}
+
+.round:active{
+  //  transform: scale(1.2);
+  //  background-color: #d44b64 !important;
+}
+.footer{
+  bottom: 0;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  padding: 20px;
+}
+
+.listening{
+  width: 70px;
+  height: 70px;
+  border-radius: 100px;
+  font-size: 24px;
+  margin: auto;
+  transition: all 0.2s ease-in-out;
+   background-color: #d44b64 !important;
+}
+.initial{
+  width: 70px;
+  height: 70px;
+  border-radius: 100px;
+  font-size: 24px;
+  margin: auto;
+  transition: all 0.2s ease-in-out;
+}
+
+
+}
