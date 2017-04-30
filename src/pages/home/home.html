@@ -22,7 +22,7 @@
 
     <div class="footer">
 
-        <button ion-button [ngClass]="{  'initial': state ==='initial', 'listening': state === 'listening' }"  position="bottom"  (click)="startListening()">
+        <button ion-button [ngClass]="{  'initial': state ==='initial', 'listening': state === 'listening' }"  position="bottom"  (click)="startListening()" (keyup)="stopListening($event)">
           <ion-icon name="mic"></ion-icon>
         </button>
 

@@ -2,6 +2,7 @@
 import { NavController } from 'ionic-angular';
 import { Component, trigger, state, style, transition, animate, keyframes } from '@angular/core';
 import { SpeechRecognition } from 'ionic-native';
+import { LoadingService } from "../../providers/loading";
 
 
 @Component({
@@ -27,7 +28,7 @@ export class HomePage {
 
   state: String;
   result:String="";
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public loadingService: LoadingService) {
       this.state = 'initial';
   }
 
@@ -45,7 +46,7 @@ export class HomePage {
         // matches:5 ,
         // prompt:"",      // Android only
         // showPopup:true,  // Android only
-         showPartial:true // iOS only
+         //showPartial:true // iOS only
      }
      console.log(this.state);
      var results=[];
@@ -57,7 +58,8 @@ export class HomePage {
         results=matches;
         this.result=results.join();
         console.log(matches)
-        // SpeechRecognition.stopListening();
+        //For Android Only. Comment the following line for IOS.
+        this.state = "initial";
 
       },
       (onerror) => {
@@ -67,27 +69,39 @@ export class HomePage {
     );
 
      }
-     else {
-       this.state = "initial";
-       SpeechRecognition.stopListening();
-     }
+    //  //For IOS only. Comment the following block for Android.
+    //  else {
+    //    this.state = "initial";
+    //    SpeechRecognition.stopListening();
+    //  }
 
 
    }
 
+  //  stopListening(ev){
+  //    console.log("stop!")
+  //    //    this.state = "initial";
+  //   //    //SpeechRecognition.stopListening();
+  //  }
+
 ionViewDidLoad(){
 
   console.log("sdfsd");
-  setTimeout(()=> {
-    SpeechRecognition.requestPermission()
+  // setTimeout(()=> {
+  //   SpeechRecognition.requestPermission()
+  //     .then(
+  //       () => console.log('Granted'),
+  //       () => console.log('Denied')
+  //     );
+  // },3000);
+
+  this.loadingService.presentLoading();
+      SpeechRecognition.requestPermission()
       .then(
-        () => console.log('Granted'),
-        () => console.log('Denied')
+        () => {console.log('Granted'); this.loadingService.dismissLoader();},
+        () => {console.log('Denied'); this.loadingService.dismissLoader();}
       );
-  },3000);
-
-
-
 
 }
+
 }

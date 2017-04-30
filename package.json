@@ -22,6 +22,7 @@
     "@ionic-native/core": "^3.1.0",
     "@ionic-native/splash-screen": "3.1.0",
     "@ionic-native/status-bar": "3.1.0",
+    "@ionic/cloud-angular": "^0.12.0",
     "@ionic/storage": "2.0.0",
     "ionic-angular": "2.3.0",
     "ionic-native": "^2.9.0",
