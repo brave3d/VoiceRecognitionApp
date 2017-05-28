@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar color="primary">
+  <ion-navbar [color]="isRecording ? 'danger' : 'primary' ">
     <ion-title>
       Voice Recognition App
     </ion-title>
@@ -12,18 +12,34 @@
 
   <ion-card>
       <ion-card-header>
-        Result
+        Requset
       </ion-card-header>
 
       <ion-card-content >
-        {{result}}
+        {{question}}
+      </ion-card-content>
+    </ion-card>
+
+      <ion-card>
+      <ion-card-header>
+        Response
+      </ion-card-header>
+
+      <ion-card-content >
+        {{answer}}
       </ion-card-content>
     </ion-card>
 
     <div class="footer">
 
+
+      <p *ngIf="isIos()"> {{i}} </p>
         <button ion-button [ngClass]="{  'initial': state ==='initial', 'listening': state === 'listening' }"  position="bottom"  (click)="startListening()" (keyup)="stopListening($event)">
           <ion-icon name="mic"></ion-icon>
+        </button>
+
+        <button ion-button position="bottom" class="pause" *ngIf="isIos()">
+        <ion-icon name="ios-pause-outline" (click)="stopListening()" ></ion-icon>
         </button>
 
 

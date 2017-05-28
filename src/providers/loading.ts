@@ -9,7 +9,7 @@ constructor(public loadingCtrl: LoadingController){}
 private loader;
 public presentLoading() {
     this.loader = this.loadingCtrl.create({
-      content: "Lütfen Bekleyiniz ..."
+      content: "Waiting ..."
     });
     this.loader.present();
   }
